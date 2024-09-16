@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import {Outlet, Link, NavLink} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './css/Layout.css'
-import Pokemon from './components/pokemon'
+import router from './routes/routes';
+import Pokemon from './components/pokemon';
 
 function Layout() {
   
@@ -8,7 +10,13 @@ function Layout() {
   return (
     <>
       <h1>¡FIESTA DE API'S!</h1>
-      <Pokemon></Pokemon>
+      <ul>
+        <li><NavLink to={"pokemons"}></NavLink></li>
+      </ul>
+
+      <main>
+        <Outlet/>
+      </main>
     </>
   )
 }
