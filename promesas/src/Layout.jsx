@@ -1,22 +1,24 @@
 import {Outlet, Link, NavLink} from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
 import './css/Layout.css'
-import router from './routes/routes';
-import Pokemon from './components/pokemon';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function Layout() {
   
 
   return (
     <>
-      <h1>¡FIESTA DE API'S!</h1>
-      <ul>
-        <li><NavLink to={"pokemons"}></NavLink></li>
-      </ul>
+      <header>
+        <Header/>
+      </header>
 
       <main>
         <Outlet/>
       </main>
+
+      <footer>
+        <Footer/>
+      </footer>
     </>
   )
 }
