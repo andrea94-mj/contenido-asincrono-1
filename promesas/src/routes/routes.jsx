@@ -1,7 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import Layout from "../Layout";
+
 import Home from "../pages/Home";
 import PokeApi from "../pages/PokeApi";
-import Layout from "../Layout";
+import Pokemon from "../pages/Pokemon";
+
+
+
 
 const router = createBrowserRouter([{
     path: "/",
@@ -15,7 +20,12 @@ const router = createBrowserRouter([{
         {
             path: "pokeApi",
             element: <PokeApi/>,
+        },
+        {
+            path: "pokeApi/:id",
+            element: <Pokemon/>,
         }
+
     ]
 }])
 

@@ -1,5 +1,6 @@
 import {Outlet, Link, NavLink} from 'react-router-dom';
 import './css/Layout.css'
+import './css/index.css'
 import Header from './components/Header';
 import Footer from './components/Footer';
 

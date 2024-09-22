@@ -1,81 +1,77 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import '../css/PokeApi.css';
 
+import pokemons from '../assets/pokemons.webp';
+import hazte_con_todos from '../assets/hazte_con_todos.png';
 
-const PokeApi = () =>{
-
-    const [pokemons, setPokemons] = useState({
-        count: 0,
-        next: "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20",
-        previous: null,
-        results: []
+const PokeApi = () => {
+    const [data, setData] = useState({
+        total: 0,
+        nextPage: "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20",
+        prevPage: null,
+        pokemonList: []
     });
-
-    const [filtro, setFiltro] = useState("");
-    let disable = false;
+    const [searchTerm, setSearchTerm] = useState("");
+    let isDisabled = false;
 
     useEffect(() => {
-        fetchPokemon();
+        fetchPokemonData();
     }, []);
 
-    useEffect(() => {
-        if (filtro) fetchFilter();
-    }, [filtro]);
-
-    const fetchPokemon = async (url = "https://pokeapi.co/api/v2/pokemon") => {
+    const fetchPokemonData = async (url = "https://pokeapi.co/api/v2/pokemon") => {
         try {
             const response = await fetch(url);
-            const objeto = await response.json();
-            setPokemons({
-                count: objeto.count,
-                next: objeto.next,
-                previous: objeto.previous,
-                results: objeto.results
+            const result = await response.json();
+            setData({
+                total: result.count,
+                nextPage: result.next,
+                prevPage: result.previous,
+                pokemonList: result.results
             });
-            console.log(objeto);
+            console.log(result);
         } catch (error) {
-            console.error(error);
+            console.error("Error fetching data:", error);
         }
-    }
+    };
 
-    const handlePrevPage = () => {
-        if (pokemons.previous) {
-            fetchPokemon(pokemons.previous);
+    const goToNextPage = () => {
+        if (data.nextPage) {
+            fetchPokemonData(data.nextPage);
         } else {
-            disable = true;
+            isDisabled = true;
         }
-    }
-
-    const handleNextPage = () => {
-        if (pokemons.next) {
-            fetchPokemon(pokemons.next);
+    };
+    
+    const goToPrevPage = () => {
+        if (data.prevPage) {
+            fetchPokemonData(data.prevPage);
         } else {
-            disable = true;
+            isDisabled = true;
         }
-    }
+    };
 
-    return(
-        <>
-                <div>
-            <h1>PokeApi</h1>
-            <p>Aquí encontrarás toda la información sobre tus pokémon favoritos</p>
-            <p>Cantidad de pokémon: {pokemons.count}</p>
-            <div className="botones-div">
-                <button className="link-btn" onClick={handlePrevPage} disabled={disable}>Prev</button>
-                <button className="link-btn" onClick={handleNextPage} disabled={disable}>Next</button>
+    return (
+        <section className="Section">
+            <img className="Section-img" src={pokemons} alt="pokemon" />
+            <img className="Section-img" src={hazte_con_todos} alt="pokemon" />
+            <h2 className="Section-h2">Aquí encontrarás toda la información sobre tus pokémon favoritos</h2>
+            <p className="Section-cantidad">Cantidad de pokémon: {data.total}</p>
+            <div className="Section-div">
+                <button className="Section-btn" onClick={goToPrevPage} disabled={isDisabled}>Anterior</button>
+                <button className="Section-btn" onClick={goToNextPage} disabled={isDisabled}>Siguiente</button>
             </div>
-            <ul>
-                {pokemons.results.map((poke, index) => (
-                    <li key={index}>
-                        <Link key={index} to={`/pokeApi/${index}`}>
-                            {poke.name}
+            <ul className="Section-ul">
+                {data.pokemonList.map((poke, idx) => (
+                    <li key={idx}>
+                        <Link to={`/pokeApi/${poke.name}`}>
+                            <p className="Section-p">{poke.name}</p>
                         </Link>
                     </li>
                 ))}
             </ul>
-        </div>
-        </>
-    )
+        </section>
+    );
 }
 
-export default PokeApi
+export default PokeApi;
