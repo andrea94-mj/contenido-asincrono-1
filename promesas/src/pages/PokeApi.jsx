@@ -12,6 +12,7 @@ const PokeApi = () => {
         prevPage: null,
         pokemonList: []
     });
+
     const [searchTerm, setSearchTerm] = useState("");
     let isDisabled = false;
 
@@ -54,22 +55,21 @@ const PokeApi = () => {
     return (
         <section className="Section">
             <img className="Section-img" src={pokemons} alt="pokemon" />
-            <img className="Section-img" src={hazte_con_todos} alt="pokemon" />
-            <h2 className="Section-h2">Aquí encontrarás toda la información sobre tus pokémon favoritos</h2>
-            <p className="Section-cantidad">Cantidad de pokémon: {data.total}</p>
+            <img className="Section-img--2" src={hazte_con_todos} alt="pokemon" />
             <div className="Section-div">
                 <button className="Section-btn" onClick={goToPrevPage} disabled={isDisabled}>Anterior</button>
                 <button className="Section-btn" onClick={goToNextPage} disabled={isDisabled}>Siguiente</button>
             </div>
             <ul className="Section-ul">
-                {data.pokemonList.map((poke, idx) => (
-                    <li key={idx}>
+                {data.pokemonList.map((poke, i) => (
+                    <li key={i}>
                         <Link to={`/pokeApi/${poke.name}`}>
                             <p className="Section-p">{poke.name}</p>
                         </Link>
                     </li>
                 ))}
             </ul>
+                <p className="Section-pokemons">Total de pokémons: {data.total}</p>
         </section>
     );
 }

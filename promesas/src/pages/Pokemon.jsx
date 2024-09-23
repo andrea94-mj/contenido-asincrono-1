@@ -24,10 +24,7 @@ const Pokemon = () => {
 
     return (
         <article className="Article-container">
-            <div className="Article-div">
-                <h2 className="Article-h2">{name}</h2>
-            </div>
-
+                <h2 className="Article-h2">Pokémon: {name}</h2>
             <div className="Article-div">
                 <img src={back_default} alt={name} />
                 <img src={front_default} alt={name} />
@@ -35,23 +32,23 @@ const Pokemon = () => {
                 <img src={front_shiny} alt={name} />
             </div>
 
-            <div className="Article-div">
-                <p className="Article-p"><b>Height: </b>{height}</p>
-                <p className="Article-p"><b>Weight: </b>{weight}</p>
-                <p className="Article-p"><b>Base Experience: </b>{base_experience}</p>
+            <div className="Article-div--p">
+                <p className="Article-p"><b>Experiencia: </b>{base_experience}</p>
+                <p className="Article-p"><b>Altura: </b>{height}</p>
+                <p className="Article-p"><b>Anchura: </b>{weight}</p>
             </div>
 
             <div className="Article-div">
-                <p className="Article-p"><b>Número de orden en la pokedex: </b>{order}</p>
+                <p className="Article-p"><b>Pokédex: </b>{order}</p>
             </div>
 
             <div className="Article-map">
-                <p className="Article-p"><b>Habilidades: </b></p>
+                <p className="Article-p"><b>Ataques: </b></p>
                 <ul>
                     <li>
                         {
-                            abilities && abilities.map((ability, index) => (
-                                <p key={index} className="Article-p">{ability.ability.name}</p>
+                            abilities && abilities.map((ability, i) => (
+                                <p key={i} className="Article-p">{ability.ability.name}</p>
                             ))
                         }
                     </li>
@@ -63,8 +60,8 @@ const Pokemon = () => {
                 <ul>
                     <li>
                         {
-                            forms && forms.map((form, index) => (
-                                <p key={index} className="Article-p">{form.name}</p>
+                            forms && forms.map((form, i) => (
+                                <p key={i} className="Article-p">{form.name}</p>
                             ))
                         }
                     </li>
@@ -76,8 +73,8 @@ const Pokemon = () => {
                 <ul>
                     <li>
                         {
-                            stats && stats.map((stat, index) => (
-                                <p key={index} className="Article-p">{stat.stat.name}: {stat.base_stat}</p>
+                            stats && stats.map((stat, i) => (
+                                <p key={i} className="Article-p">{stat.stat.name}: {stat.base_stat}</p>
                             ))
                         }
                     </li>

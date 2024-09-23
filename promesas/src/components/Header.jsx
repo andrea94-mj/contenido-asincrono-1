@@ -5,8 +5,8 @@ const Header = () =>{
         <>
         <header className="Header">
         <div className="Header-div"> 
-          <h1 className="Header-h1">Promesas Party!</h1>
-          <nav>
+          <h1 className="Header-h1">Promesas</h1>
+          <nav className="Header-nav">
             <ul className="Header-ul">
               <li className="Header-li"><NavLink to={"/"}>Inicio</NavLink></li>
               <li className="Header-li"><NavLink to={"pokeApi"}>PokeApi</NavLink></li>
