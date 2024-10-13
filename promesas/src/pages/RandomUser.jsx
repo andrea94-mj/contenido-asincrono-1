@@ -34,7 +34,6 @@ const RandomUser = () => {
 
     return (
         <div className="usuarios-container">
-            <h1>Usuarios Aleatorios</h1>
             <ul>
                 {usuarios.length === 0 ? (
                     <p>No hay usuarios disponibles</p>

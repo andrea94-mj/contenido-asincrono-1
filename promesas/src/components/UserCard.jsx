@@ -1,21 +1,20 @@
 import React from 'react';
+import img_user from '../assets/img_user.png';
 
 
 const UserCard = ({ name, username, email, phone, website, address }) => {
-    // Desestructuramos el objeto address
+    
     const { street, suite, city, zipcode, geo } = address;
-
-    // Generamos una imagen aleatoria de randomuser.me
     
 
     return (
-        <div className="user-card">
-            <img src="" alt="imagen-usuario" className="user-avatar" />
+        <div className="Usercard-container">
+            <img src={img_user} alt="imagen-usuario" className="user-avatar" />
             <h2>{name}</h2>
             <p>{username}</p>
             <p><strong>Email:</strong> {email}</p>
             <p><strong>Teléfono:</strong> {phone}</p>
-            <p><strong>Web:</strong> <a href={`https://${website}`} target="_blank" rel="noopener noreferrer">{website}</a></p>
+            <p><strong>Web:</strong> <a href={`https://${website}`} target="_blank" rel="noreferrer">{website}</a></p>
             
             {/* Información de dirección */}
             <div className="address">
