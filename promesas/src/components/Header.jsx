@@ -10,6 +10,8 @@ const Header = () =>{
             <ul className="Header-ul">
               <li className="Header-li"><NavLink to={"/"}>Inicio</NavLink></li>
               <li className="Header-li"><NavLink to={"pokeApi"}>PokeApi</NavLink></li>
+              <li className="Header-li"><NavLink to={"storeApi"}>StoreApi</NavLink></li>
+              <li className="Header-li"><NavLink to={"randomUser"}>RandomUser</NavLink></li>
            </ul>
           </nav>
         </div>

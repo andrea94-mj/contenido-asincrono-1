@@ -32,7 +32,7 @@ const PokeApi = () => {
             });
             console.log(result);
         } catch (error) {
-            console.error("Error fetching data:", error);
+            console.error("Error", error);
         }
     };
 
